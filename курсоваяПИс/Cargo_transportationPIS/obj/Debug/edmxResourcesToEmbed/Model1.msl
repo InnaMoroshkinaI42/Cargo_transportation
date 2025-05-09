@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище GruzzPISModelContainer" CdmEntityContainer="GruzzPISEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GruzzPISModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заявки">
+      <EntityTypeMapping TypeName="GruzzPISModel.Заявки">
+        <MappingFragment StoreEntitySet="Заявки">
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+          <ScalarProperty Name="Вес" ColumnName="Вес" />
+          <ScalarProperty Name="Название_груза" ColumnName="Название_груза" />
+          <ScalarProperty Name="Адрес_прибытия" ColumnName="Адрес_прибытия" />
+          <ScalarProperty Name="Адрес_отправления" ColumnName="Адрес_отправления" />
+          <ScalarProperty Name="Комментарий" ColumnName="Комментарий" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="ID_статус" ColumnName="ID_статус" />
+          <ScalarProperty Name="ID_менеджера" ColumnName="ID_менеджера" />
+          <ScalarProperty Name="ID_клиента" ColumnName="ID_клиента" />
+          <ScalarProperty Name="ID_заявки" ColumnName="ID_заявки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Маршруты">
+      <EntityTypeMapping TypeName="GruzzPISModel.Маршруты">
+        <MappingFragment StoreEntitySet="Маршруты">
+          <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
+          <ScalarProperty Name="ID_заявки" ColumnName="ID_заявки" />
+          <ScalarProperty Name="ID_статус" ColumnName="ID_статус" />
+          <ScalarProperty Name="ID_транспорта" ColumnName="ID_транспорта" />
+          <ScalarProperty Name="Дата_прибытия" ColumnName="Дата_прибытия" />
+          <ScalarProperty Name="Дата_отправки" ColumnName="Дата_отправки" />
+          <ScalarProperty Name="ID_водителя" ColumnName="ID_водителя" />
+          <ScalarProperty Name="ID_маршрута" ColumnName="ID_маршрута" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Платежи">
+      <EntityTypeMapping TypeName="GruzzPISModel.Платежи">
+        <MappingFragment StoreEntitySet="Платежи">
+          <ScalarProperty Name="ID_статуса" ColumnName="ID_статуса" />
+          <ScalarProperty Name="Дата_платежа" ColumnName="Дата_платежа" />
+          <ScalarProperty Name="Сумма" ColumnName="Сумма" />
+          <ScalarProperty Name="ID_маршрута" ColumnName="ID_маршрута" />
+          <ScalarProperty Name="ID_Платежа" ColumnName="ID_Платежа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Пользователи">
+      <EntityTypeMapping TypeName="GruzzPISModel.Пользователи">
+        <MappingFragment StoreEntitySet="Пользователи">
+          <ScalarProperty Name="Активен" ColumnName="Активен" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
+          <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+          <ScalarProperty Name="Фото" ColumnName="Фото" />
+          <ScalarProperty Name="ID_роли" ColumnName="ID_роли" />
+          <ScalarProperty Name="Почта" ColumnName="Почта" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="ID_пользователя" ColumnName="ID_пользователя" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Роли">
+      <EntityTypeMapping TypeName="GruzzPISModel.Роли">
+        <MappingFragment StoreEntitySet="Роли">
+          <ScalarProperty Name="Роль" ColumnName="Роль" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Статус">
+      <EntityTypeMapping TypeName="GruzzPISModel.Статус">
+        <MappingFragment StoreEntitySet="Статус">
+          <ScalarProperty Name="Наименование_статуса" ColumnName="Наименование_статуса" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Транспорт">
+      <EntityTypeMapping TypeName="GruzzPISModel.Транспорт">
+        <MappingFragment StoreEntitySet="Транспорт">
+          <ScalarProperty Name="ID_статус" ColumnName="ID_статус" />
+          <ScalarProperty Name="Год_выпуска" ColumnName="Год_выпуска" />
+          <ScalarProperty Name="Вместительность" ColumnName="Вместительность" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Номерной_знак" ColumnName="Номерной_знак" />
+          <ScalarProperty Name="ID_транспорта" ColumnName="ID_транспорта" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Уведомления">
+      <EntityTypeMapping TypeName="GruzzPISModel.Уведомления">
+        <MappingFragment StoreEntitySet="Уведомления">
+          <ScalarProperty Name="Прочитано" ColumnName="Прочитано" />
+          <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
+          <ScalarProperty Name="Текст" ColumnName="Текст" />
+          <ScalarProperty Name="ID_заявки" ColumnName="ID_заявки" />
+          <ScalarProperty Name="ID_пользователя" ColumnName="ID_пользователя" />
+          <ScalarProperty Name="ID_уведомления" ColumnName="ID_уведомления" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4ff58f40e17f4ec18e45798cb11eeb4a" Name="Diagram1">
+        <EntityTypeShape EntityType="GruzzPISModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="9.25" />
+        <EntityTypeShape EntityType="GruzzPISModel.Заявки" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="GruzzPISModel.Маршруты" Width="1.5" PointX="10.5" PointY="4.25" />
+        <EntityTypeShape EntityType="GruzzPISModel.Платежи" Width="1.5" PointX="12.75" PointY="4.875" />
+        <EntityTypeShape EntityType="GruzzPISModel.Пользователи" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="GruzzPISModel.Роли" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="GruzzPISModel.Статус" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="GruzzPISModel.Транспорт" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="GruzzPISModel.Уведомления" Width="1.5" PointX="7.5" PointY="4.75" />
+        <AssociationConnector Association="GruzzPISModel.FK_Заявки_Users" />
+        <AssociationConnector Association="GruzzPISModel.FK_Заявки_Users1" />
+        <AssociationConnector Association="GruzzPISModel.FK_Заявки_Статус" />
+        <AssociationConnector Association="GruzzPISModel.FK_Маршруты_Заявки" />
+        <AssociationConnector Association="GruzzPISModel.FK_Уведомления_Заявки" />
+        <AssociationConnector Association="GruzzPISModel.FK_Маршруты_Users" />
+        <AssociationConnector Association="GruzzPISModel.FK_Перевозки_Статус" />
+        <AssociationConnector Association="GruzzPISModel.FK_Перевозки_Транспорт" />
+        <AssociationConnector Association="GruzzPISModel.FK_Платежи_Маршруты" />
+        <AssociationConnector Association="GruzzPISModel.FK_Платежи_Статус" />
+        <AssociationConnector Association="GruzzPISModel.FK_Сотрудники_Роли" />
+        <AssociationConnector Association="GruzzPISModel.FK_Уведомления_Пользователи" />
+        <AssociationConnector Association="GruzzPISModel.FK_Транспорт_Статус" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

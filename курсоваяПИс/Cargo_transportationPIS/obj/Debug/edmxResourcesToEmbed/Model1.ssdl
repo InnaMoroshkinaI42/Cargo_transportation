@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище GruzzPISModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Заявки">
+    <Key>
+      <PropertyRef Name="ID_заявки" />
+    </Key>
+    <Property Name="ID_заявки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_клиента" Type="int" />
+    <Property Name="ID_менеджера" Type="int" />
+    <Property Name="ID_статус" Type="int" />
+    <Property Name="Дата" Type="datetime" />
+    <Property Name="Комментарий" Type="nvarchar(max)" />
+    <Property Name="Адрес_отправления" Type="nvarchar(max)" />
+    <Property Name="Адрес_прибытия" Type="nvarchar(max)" />
+    <Property Name="Название_груза" Type="nvarchar" MaxLength="50" />
+    <Property Name="Вес" Type="int" />
+    <Property Name="Количество" Type="int" />
+  </EntityType>
+  <EntityType Name="Маршруты">
+    <Key>
+      <PropertyRef Name="ID_маршрута" />
+    </Key>
+    <Property Name="ID_маршрута" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_водителя" Type="int" />
+    <Property Name="Дата_отправки" Type="datetime" />
+    <Property Name="Дата_прибытия" Type="datetime" />
+    <Property Name="ID_транспорта" Type="int" />
+    <Property Name="ID_статус" Type="int" />
+    <Property Name="ID_заявки" Type="int" />
+    <Property Name="Стоимость" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Платежи">
+    <Key>
+      <PropertyRef Name="ID_Платежа" />
+    </Key>
+    <Property Name="ID_Платежа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_маршрута" Type="int" />
+    <Property Name="Сумма" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Дата_платежа" Type="date" />
+    <Property Name="ID_статуса" Type="int" />
+  </EntityType>
+  <EntityType Name="Пользователи">
+    <Key>
+      <PropertyRef Name="ID_пользователя" />
+    </Key>
+    <Property Name="ID_пользователя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Фамилия" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Имя" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Отчество" Type="nchar" MaxLength="10" />
+    <Property Name="Дата_рождения" Type="datetime" Nullable="false" />
+    <Property Name="Телефон" Type="int" Nullable="false" />
+    <Property Name="Почта" Type="nchar" MaxLength="10" />
+    <Property Name="ID_роли" Type="int" Nullable="false" />
+    <Property Name="Фото" Type="image" />
+    <Property Name="Стаж" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Зарплата" Type="money" />
+    <Property Name="Паспорт" Type="nchar" MaxLength="10" />
+    <Property Name="Логин" Type="nchar" MaxLength="10" />
+    <Property Name="Пароль" Type="nchar" MaxLength="10" />
+    <Property Name="Активен" Type="bit" />
+  </EntityType>
+  <EntityType Name="Роли">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Роль" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Статус">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование_статуса" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Транспорт">
+    <Key>
+      <PropertyRef Name="ID_транспорта" />
+    </Key>
+    <Property Name="ID_транспорта" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Номерной_знак" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Тип" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Вместительность" Type="int" Nullable="false" />
+    <Property Name="Год_выпуска" Type="int" Nullable="false" />
+    <Property Name="ID_статус" Type="int" />
+  </EntityType>
+  <EntityType Name="Уведомления">
+    <Key>
+      <PropertyRef Name="ID_уведомления" />
+    </Key>
+    <Property Name="ID_уведомления" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_пользователя" Type="int" />
+    <Property Name="ID_заявки" Type="int" />
+    <Property Name="Текст" Type="nvarchar(max)" />
+    <Property Name="Дата_создания" Type="datetime" />
+    <Property Name="Прочитано" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Заявки_Users">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="0..1" />
+    <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="ID_пользователя" />
+      </Principal>
+      <Dependent Role="Заявки">
+        <PropertyRef Name="ID_менеджера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявки_Users1">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="0..1" />
+    <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="ID_пользователя" />
+      </Principal>
+      <Dependent Role="Заявки">
+        <PropertyRef Name="ID_клиента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявки_Статус">
+    <End Role="Статус" Type="Self.Статус" Multiplicity="0..1" />
+    <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статус">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Заявки">
+        <PropertyRef Name="ID_статус" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Маршруты_Users">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="0..1" />
+    <End Role="Маршруты" Type="Self.Маршруты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="ID_пользователя" />
+      </Principal>
+      <Dependent Role="Маршруты">
+        <PropertyRef Name="ID_водителя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Маршруты_Заявки">
+    <End Role="Заявки" Type="Self.Заявки" Multiplicity="0..1" />
+    <End Role="Маршруты" Type="Self.Маршруты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заявки">
+        <PropertyRef Name="ID_заявки" />
+      </Principal>
+      <Dependent Role="Маршруты">
+        <PropertyRef Name="ID_заявки" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Перевозки_Статус">
+    <End Role="Статус" Type="Self.Статус" Multiplicity="0..1" />
+    <End Role="Маршруты" Type="Self.Маршруты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статус">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Маршруты">
+        <PropertyRef Name="ID_статус" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Перевозки_Транспорт">
+    <End Role="Транспорт" Type="Self.Транспорт" Multiplicity="0..1" />
+    <End Role="Маршруты" Type="Self.Маршруты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Транспорт">
+        <PropertyRef Name="ID_транспорта" />
+      </Principal>
+      <Dependent Role="Маршруты">
+        <PropertyRef Name="ID_транспорта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Платежи_Маршруты">
+    <End Role="Маршруты" Type="Self.Маршруты" Multiplicity="0..1" />
+    <End Role="Платежи" Type="Self.Платежи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Маршруты">
+        <PropertyRef Name="ID_маршрута" />
+      </Principal>
+      <Dependent Role="Платежи">
+        <PropertyRef Name="ID_маршрута" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Платежи_Статус">
+    <End Role="Статус" Type="Self.Статус" Multiplicity="0..1" />
+    <End Role="Платежи" Type="Self.Платежи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статус">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Платежи">
+        <PropertyRef Name="ID_статуса" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудники_Роли">
+    <End Role="Роли" Type="Self.Роли" Multiplicity="1" />
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Роли">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Пользователи">
+        <PropertyRef Name="ID_роли" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Транспорт_Статус">
+    <End Role="Статус" Type="Self.Статус" Multiplicity="0..1" />
+    <End Role="Транспорт" Type="Self.Транспорт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статус">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Транспорт">
+        <PropertyRef Name="ID_статус" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Уведомления_Заявки">
+    <End Role="Заявки" Type="Self.Заявки" Multiplicity="0..1" />
+    <End Role="Уведомления" Type="Self.Уведомления" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заявки">
+        <PropertyRef Name="ID_заявки" />
+      </Principal>
+      <Dependent Role="Уведомления">
+        <PropertyRef Name="ID_заявки" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Уведомления_Пользователи">
+    <End Role="Пользователи" Type="Self.Пользователи" Multiplicity="0..1" />
+    <End Role="Уведомления" Type="Self.Уведомления" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пользователи">
+        <PropertyRef Name="ID_пользователя" />
+      </Principal>
+      <Dependent Role="Уведомления">
+        <PropertyRef Name="ID_пользователя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище GruzzPISModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заявки" EntityType="Self.Заявки" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Маршруты" EntityType="Self.Маршруты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Платежи" EntityType="Self.Платежи" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Пользователи" EntityType="Self.Пользователи" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Роли" EntityType="Self.Роли" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Статус" EntityType="Self.Статус" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Транспорт" EntityType="Self.Транспорт" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Уведомления" EntityType="Self.Уведомления" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Заявки_Users" Association="Self.FK_Заявки_Users">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Заявки" EntitySet="Заявки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявки_Users1" Association="Self.FK_Заявки_Users1">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Заявки" EntitySet="Заявки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявки_Статус" Association="Self.FK_Заявки_Статус">
+      <End Role="Статус" EntitySet="Статус" />
+      <End Role="Заявки" EntitySet="Заявки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Маршруты_Users" Association="Self.FK_Маршруты_Users">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Маршруты" EntitySet="Маршруты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Маршруты_Заявки" Association="Self.FK_Маршруты_Заявки">
+      <End Role="Заявки" EntitySet="Заявки" />
+      <End Role="Маршруты" EntitySet="Маршруты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Перевозки_Статус" Association="Self.FK_Перевозки_Статус">
+      <End Role="Статус" EntitySet="Статус" />
+      <End Role="Маршруты" EntitySet="Маршруты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Перевозки_Транспорт" Association="Self.FK_Перевозки_Транспорт">
+      <End Role="Транспорт" EntitySet="Транспорт" />
+      <End Role="Маршруты" EntitySet="Маршруты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Платежи_Маршруты" Association="Self.FK_Платежи_Маршруты">
+      <End Role="Маршруты" EntitySet="Маршруты" />
+      <End Role="Платежи" EntitySet="Платежи" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Платежи_Статус" Association="Self.FK_Платежи_Статус">
+      <End Role="Статус" EntitySet="Статус" />
+      <End Role="Платежи" EntitySet="Платежи" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудники_Роли" Association="Self.FK_Сотрудники_Роли">
+      <End Role="Роли" EntitySet="Роли" />
+      <End Role="Пользователи" EntitySet="Пользователи" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Транспорт_Статус" Association="Self.FK_Транспорт_Статус">
+      <End Role="Статус" EntitySet="Статус" />
+      <End Role="Транспорт" EntitySet="Транспорт" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Уведомления_Заявки" Association="Self.FK_Уведомления_Заявки">
+      <End Role="Заявки" EntitySet="Заявки" />
+      <End Role="Уведомления" EntitySet="Уведомления" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Уведомления_Пользователи" Association="Self.FK_Уведомления_Пользователи">
+      <End Role="Пользователи" EntitySet="Пользователи" />
+      <End Role="Уведомления" EntitySet="Уведомления" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
